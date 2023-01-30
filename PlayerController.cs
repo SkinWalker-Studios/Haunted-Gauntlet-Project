@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 2000;
     int currentHealth;
     int currentScore;
+    int currentSpeed;
 
     // collectables
     public int keyAmount;
@@ -73,6 +74,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             Launch();
+            currentSpeed = 0;
+        }
+        
+        if (Input.GetKeyUp(KeyCode.X))
+        {
+            currentSpeed = speed;
         }
 
         // esc to exit
@@ -97,8 +104,8 @@ public class PlayerController : MonoBehaviour
     {
         // movements
         Vector2 position = rigidbody2d.position;
-        position.x += speed * horizontal * Time.deltaTime;
-        position.y += speed * vertical * Time.deltaTime;
+        position.x += currentSpeed * horizontal * Time.deltaTime;
+        position.y += currentSpeed * vertical * Time.deltaTime;
         rigidbody2d.MovePosition(position);
         posX = position.x;
         posY = position.y;
@@ -149,7 +156,7 @@ public class PlayerController : MonoBehaviour
 
         if (currentHealth <= 0 && again == true)
         {
-            speed = 0;
+            currentSpeed = 0;
             gameOver = true;
         }
     }
