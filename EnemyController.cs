@@ -32,8 +32,8 @@ public class EnemyController : MonoBehaviour
         player.posY = posY;
 
         // calculates the direction towards the player
-        float distanceX = |position.x - posX|;
-        float distanceY = |position.y - posY|;
+        float distanceX = position.x - posX;
+        float distanceY = position.y - posY;
         float distance = sqrt(pow(distanceX, 2) + pow(distanceY, 2));
         float directionX = distanceX / distance;
         float directionY = distanceY / distance;
