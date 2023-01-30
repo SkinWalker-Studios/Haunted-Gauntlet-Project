@@ -23,15 +23,4 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        EnemyController e = other.collider.GetComponent<EnemyController>();
-        if (e != null)
-        {
-            e.ChangeHealth(0) // SET VALUE
-        }
-
-        Destroy(gameObject);
-    }
 }
