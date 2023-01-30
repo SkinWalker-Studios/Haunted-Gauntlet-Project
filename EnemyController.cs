@@ -64,9 +64,9 @@ public class EnemyController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         // damage from projectile
-        if (other.gameObject.CompareTag("")) // SET TAG
+        if (other.gameObject.CompareTag("Projectile")) // SET TAG
         {
-            ChangeHealth(0); // SET VALUE
+            ChangeHealth(-50); // SET VALUE
             Destroy(other.gameObject);
         }
     }
@@ -74,9 +74,9 @@ public class EnemyController : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         // player contact
-        if (other.gameObject.CompareTag("")) // SET TAG
+        if (other.gameObject.CompareTag("Player")) // SET TAG
         {
-            ChangeHealth(0); // SET VALUE
+            ChangeHealth(-50); // SET VALUE
     }
 
     void ChangeHealth(int amount)
@@ -86,7 +86,7 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(GameObject)
-            player.ChangeScore(0) // SET VALUE
+            player.ChangeScore(100) // SET VALUE
         }
     }
 }
