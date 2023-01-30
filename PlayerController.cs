@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        int count = 0;
         // movement inputs
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
@@ -78,6 +79,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
+        }
+        
+        // health decay
+        if (count <= 60)
+        {
+            count = 0;
+            ChangeHealth(-1); // SET VALUE
+        {
+        else
+        {
+            count++;
         }
     }
 
