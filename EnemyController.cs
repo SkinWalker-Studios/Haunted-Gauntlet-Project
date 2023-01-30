@@ -60,17 +60,7 @@ public class EnemyController : MonoBehaviour
         // updates position
         rigidbody2D.MovePosition(position);
     }
-    
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        // damage from projectile
-        if (other.gameObject.CompareTag("Projectile")) // SET TAG
-        {
-            ChangeHealth(-50); // SET VALUE
-            Destroy(other.gameObject);
-        }
-    }
-    
+     
     void OnTriggerStay2D(Collider2D other)
     {
         // player contact
