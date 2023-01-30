@@ -28,8 +28,8 @@ public class EnemyController : MonoBehaviour
         Vector2 position = rigidbody2D.position;
 
         // finds the player's position
-        player.posX = posX;
-        player.posY = posY;
+        float posX = player.posX;
+        float posY = player.posY;
 
         // calculates the direction towards the player
         float distanceX = position.x - posX;
