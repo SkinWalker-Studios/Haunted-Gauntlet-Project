@@ -60,7 +60,7 @@ public class EnemyController : MonoBehaviour
         // updates position
         rigidbody2D.MovePosition(position);
     }
-
+    
     void OnCollisionEnter2D(Collision2D other)
     {
         // damage from projectile
@@ -69,6 +69,14 @@ public class EnemyController : MonoBehaviour
             ChangeHealth(0); // SET VALUE
             Destroy(other.gameObject);
         }
+    }
+    
+    void OnTriggerStay2D(Collider2D other)
+    {
+        // player contact
+        if (other.gameObject.CompareTag("")) // SET TAG
+        {
+            ChangeHealth(0); // SET VALUE
     }
 
     void ChangeHealth(int amount)
