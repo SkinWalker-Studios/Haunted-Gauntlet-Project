@@ -114,30 +114,30 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // key collectable
-        if (other.gameObject.CompareTag("")) // SET TAG
+        if (other.gameObject.CompareTag("Key")) // SET TAG
         {
             ChangeKeys(1);
             Destroy(other.gameObject);
         }
 
         // health collectable
-        if (other.gameObject.CompareTag("")) // SET TAG
+        if (other.gameObject.CompareTag("Health")) // SET TAG
         {
-            ChangeHealth(0); // SET VALUE
+            ChangeHealth(150); // SET VALUE
             Destroy(other.gameObject);
         }
 
         // potion collectable
-        if (other.gameObject.CompareTag("")) // SET TAG
+        if (other.gameObject.CompareTag("Potion")) // SET TAG
         {
             ChangePotions(1);
             Destroy(other.gameObject);
         }
         
         // treasure collectable
-        if (other.gameObject.CompareTag("")) // SET TAG
+        if (other.gameObject.CompareTag("Treasure")) // SET TAG
         {
-            ChangeScore(0); // SET VALUE
+            ChangeScore(200); // SET VALUE
             Destroy(other.gameObject);
         }
     }
@@ -145,9 +145,9 @@ public class PlayerController : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         // enemy contact
-        if (other.gameObject.CompareTag("")) // SET TAG
+        if (other.gameObject.CompareTag("Enemy")) // SET TAG
         {
-            ChangeHealth(0); // SET VALUE
+            ChangeHealth(-50); // SET VALUE
     }
 
     void ChangeHealth(int amount)
