@@ -61,6 +61,12 @@ public class EnemyController : MonoBehaviour
         rigidbody2D.MovePosition(position);
     }
      
+    if (other.gameObject.CompareTag("Projectile")) // SET TAG
+        {
+            ChangeHealth(-50); // SET VALUE
+            Destroy(other.gameObject);
+        }
+        
     void OnTriggerStay2D(Collider2D other)
     {
         // player contact
