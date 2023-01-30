@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // esc to exit
-        if (Input.GetKeyDown(escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
