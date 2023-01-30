@@ -75,9 +75,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // esc to exit
-        if (Input.GetKey(KeyCode.ESC))
+        if (Input.GetKeyDown(escape))
         {
-            // FILL IN CONDITIONAL
+            Application.Quit();
         }
     }
 
@@ -114,14 +114,7 @@ public class PlayerController : MonoBehaviour
             ChangePotions(1);
             Destroy(other.gameObject);
         }
-
-        // enemy contact
-        if (other.gameObject.CompareTag("")) // SET TAG
-        {
-            ChangeHealth(0); // SET VALUE
-            Destroy(other.gameObject);
-        }
-
+        
         // treasure collectable
         if (other.gameObject.CompareTag("")) // SET TAG
         {
@@ -129,19 +122,23 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+    
+    void OnTriggerStay2D(Collider2D other)
+    {
+        // enemy contact
+        if (other.gameObject.CompareTag("")) // SET TAG
+        {
+            ChangeHealth(0); // SET VALUE
+    }
 
     void ChangeHealth(int amount)
     {
-        again = true;
-
         currentHealth += amount;
 
         if (currentHealth <= 0 && again == true)
         {
-            loseText.SetActive(true);
             speed = 0;
             gameOver = true;
-            again = false;
         }
     }
 
