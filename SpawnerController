@@ -25,17 +25,26 @@ public class SpawnerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         // damage from projectile
-        if (other.gameObject.CompareTag("")) // SET TAG
+        if (other.gameObject.CompareTag("Projectile")) // SET TAG
         {
             ChangeHealth(0); // SET VALUE
             Destroy(other.gameObject);
         }
     }
     
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Projectile")) // SET TAG
+        {
+            ChangeHealth(-50); // SET VALUE
+            Destroy(other.gameObject);
+        }
+    }
+        
     void OnTriggerStay2D(Collider2D other)
     {
         // player contact
-        if (other.gameObject.CompareTag("")) // SET TAG
+        if (other.gameObject.CompareTag("Player")) // SET TAG
         {
             ChangeHealth(0); // SET VALUE
         }
