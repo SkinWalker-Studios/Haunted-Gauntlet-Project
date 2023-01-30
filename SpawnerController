@@ -1,0 +1,61 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnerController : MonoBehaviour
+{
+    // enemy stats
+    public float speed = 1.0f;
+    public int maxHealth = 100;
+    int currentHealth;
+
+    PlayerController player = other.gameobject.GetComponent<PlayerController>;
+
+    Rigidbody2D rigidbody2D;
+
+    public GameObject enemyObject; // SET ENEMY
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        currentHealth = maxHealth;
+        rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        // damage from projectile
+        if (other.gameObject.CompareTag("")) // SET TAG
+        {
+            ChangeHealth(0); // SET VALUE
+            Destroy(other.gameObject);
+        }
+    }
+    
+    void OnTriggerStay2D(Collider2D other)
+    {
+        // player contact
+        if (other.gameObject.CompareTag("")) // SET TAG
+        {
+            ChangeHealth(0); // SET VALUE
+        }
+    }
+
+    void Spawn()
+    {
+        GameObject enemyObject = Instantiate(enemyObject, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+
+        PlaySound(throwSound); // SET SPAWN CLIP
+    }
+
+    void ChangeHealth(int amount)
+    {
+        currentHealth += amount;
+
+        if (currentHealth <= 0)
+        {
+            Destroy(GameObject)
+            player.ChangeScore(0) // SET VALUE
+        }
+    }
+}
