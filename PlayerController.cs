@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    /*
     // player stats
     public float speed = 1.0f;
     public int maxHealth = 2000;
     int currentHealth;
     int currentScore;
-    int currentSpeed;
+    float currentSpeed;
 
     // collectables
     public int keyAmount;
@@ -19,39 +20,43 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidbody2d;
     float horizontal;
     float vertical;
+    */
     public float posX;
     public float posY;
-
+    /*
     // audio
     public AudioSource musicsource;
     AudioSource audioSource;
-      // INSERT CLIPS
+    // INSERT CLIPS
 
     // world variables
-    bool gameOver = false;
+    // bool gameOver = false;
 
     // animation
     Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
-    
-    public GameObject projectilePrefab; // SET PROJECTILE
 
+    public GameObject projectilePrefab; // SET PROJECTILE
+    */
     void Start()
-    {
+    {/*
+    
         // set base variables
         currentHealth = maxHealth;
+        currentSpeed = speed;
         currentScore = 0;
         keyAmount = 0;
-        potionAmount = 0;
+        potionAmount = 0; */
         posX = 0; // SET VALUE
         posY = 0; // SET VALUE
-
+        /*
         // background music
         audioSource = GetComponent<AudioSource>();
         musicSource.clip = backgroundMusic; // SET BACKGROUND MUSIC
         musicSource.Play();
+    */    
     }
-
+    /*
     void Update()
     {
         int count = 0;
@@ -73,10 +78,10 @@ public class PlayerController : MonoBehaviour
         // firing projectiles
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Launch();
+            // Launch();
             currentSpeed = 0;
         }
-        
+
         if (Input.GetKeyUp(KeyCode.X))
         {
             currentSpeed = speed;
@@ -87,7 +92,7 @@ public class PlayerController : MonoBehaviour
         {
             Application.Quit();
         }
-        
+
         // health decay
         if (count <= 60)
         {
@@ -133,7 +138,7 @@ public class PlayerController : MonoBehaviour
             ChangePotions(1);
             Destroy(other.gameObject);
         }
-        
+
         // treasure collectable
         if (other.gameObject.CompareTag("Treasure")) // SET TAG
         {
@@ -141,7 +146,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-    
+
     void OnTriggerStay2D(Collider2D other)
     {
         // enemy contact
@@ -155,14 +160,14 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth += amount;
 
-        if (currentHealth <= 0 && again == true)
+        if (currentHealth <= 0)
         {
             currentSpeed = 0;
-            gameOver = true;
+            // gameOver = true;
         }
     }
 
-    void ChangeScore(int amount)
+    public void ChangeScore(int amount)
     {
         currentScore += amount;
     }
@@ -172,11 +177,11 @@ public class PlayerController : MonoBehaviour
         keyAmount += amount;
     }
 
-    void ChangePotion(int amount)
+    void ChangePotions(int amount)
     {
         potionAmount += amount;
     }
-
+    
     // fires a projectile
     void Launch()
     {
@@ -189,10 +194,11 @@ public class PlayerController : MonoBehaviour
 
         PlaySound(throwSound); // SET LAUNCH CLIP
     }
-
+    
     // plays a clip
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
     }
+    */
 }
