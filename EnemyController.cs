@@ -76,6 +76,7 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Player")) // SET TAG
         {
             ChangeHealth(-50); // SET VALUE
+        }
     }
 
     void ChangeHealth(int amount)
@@ -84,8 +85,8 @@ public class EnemyController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(GameObject)
-            player.ChangeScore(100) // SET VALUE
+            Destroy(GameObject);
+            player.ChangeScore(100); // SET VALUE
         }
     }
 }
