@@ -63,8 +63,8 @@ public class SpawnerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(GameObject)
-            player.ChangeScore(0) // SET VALUE
+            Destroy(GameObject);
+            player.ChangeScore(0); // SET VALUE
         }
     }
 }
