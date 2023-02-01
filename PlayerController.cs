@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         {
             count = 0;
             ChangeHealth(-1); // SET VALUE
-        {
+        }
         else
         {
             count++;
@@ -148,6 +148,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy")) // SET TAG
         {
             ChangeHealth(-50); // SET VALUE
+        }
     }
 
     void ChangeHealth(int amount)
