@@ -30,7 +30,7 @@ public class SpawnerController : MonoBehaviour
             count = 0;
             Spawn();
         }
-        count += Time.deltaTime;
+        count *= Time.deltaTime;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -63,7 +63,7 @@ public class SpawnerController : MonoBehaviour
 
     void Spawn()
     {
-        enemyObject = Instantiate(enemyObject, rigidbody2D.position + Vector2.up * 0.5f, Quaternion.identity);
+        enemyObject = Instantiate(enemyObject, rigidbody2D.position + Vector2.up * 1f, Quaternion.identity);
 
         PlaySound(throwSound); // SET SPAWN CLIP
     }
