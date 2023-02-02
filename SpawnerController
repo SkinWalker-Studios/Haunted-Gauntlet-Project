@@ -9,9 +9,7 @@ public class SpawnerController : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
 
-    public float timeInvincible = 1f;
-    bool isInvincible;
-    float invincibleTimer;
+    float count;
 
     Rigidbody2D rigidbody2D;
 
@@ -22,24 +20,17 @@ public class SpawnerController : MonoBehaviour
     {
         currentHealth = maxHealth;
         rigidbody2D = GetComponent<Rigidbody2D>();
+        count = 0;
     }
 
     void Update()
     {
-        if (isInvincible == false)
+        if (count >= 20)
         {
-            isInvincible = true;
+            count = 0;
+            Spawn();
         }
-        if (isInvincible == true)
-        {
-            invincibleTimer -= Time.deltaTime * 1;
-            if (invincibleTimer < 0)
-            {
-                isInvincible = false;
-                Spawn();
-            }
-        }
-
+        count += Time.deltaTime;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -74,7 +65,7 @@ public class SpawnerController : MonoBehaviour
     {
         enemyObject = Instantiate(enemyObject, rigidbody2D.position + Vector2.up * 0.5f, Quaternion.identity);
 
-        // PlaySound(throwSound); // SET SPAWN CLIP
+        PlaySound(throwSound); // SET SPAWN CLIP
     }
 
     void ChangeHealth(int amount)
@@ -83,8 +74,8 @@ public class SpawnerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            // Destroy(GameObject);
-            // FindObjectOfType<PlayerController>().ChangeScore(0); // SET VALUE
+            Destroy(GameObject);
+            FindObjectOfType<PlayerController>().ChangeScore(0); // SET VALUE
         }
     }
 }
