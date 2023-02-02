@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Treasure")) // SET TAG
         {
             ChangeScore(200); // SET VALUE
-            //ScoreManager.instance.AddPoint(); //For UI (needs to tested test)
+            //ScoreManager.instance.AddPoint(); //For UI (needs to tested)
             Destroy(other.gameObject);
         }
     }
