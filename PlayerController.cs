@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    /*
     // player stats
     public float speed = 1.0f;
     public int maxHealth = 2000;
+    float count = 0;
     int currentHealth;
     int currentScore;
     float currentSpeed;
@@ -20,46 +20,40 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidbody2d;
     float horizontal;
     float vertical;
-    */
     public float posX;
     public float posY;
-    /*
+    
     // audio
     public AudioSource musicsource;
     AudioSource audioSource;
     // INSERT CLIPS
 
-    // world variables
-    // bool gameOver = false;
-
     // animation
     Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
-
     public GameObject projectilePrefab; // SET PROJECTILE
-    */
+
     void Start()
-    {/*
+    {
     
         // set base variables
         currentHealth = maxHealth;
         currentSpeed = speed;
         currentScore = 0;
         keyAmount = 0;
-        potionAmount = 0; */
+        potionAmount = 0; 
         posX = 0; // SET VALUE
         posY = 0; // SET VALUE
-        /*
+        
         // background music
         audioSource = GetComponent<AudioSource>();
         musicSource.clip = backgroundMusic; // SET BACKGROUND MUSIC
         musicSource.Play();
-    */    
+     
     }
-    /*
+    
     void Update()
     {
-        int count = 0;
         // movement inputs
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
@@ -78,7 +72,7 @@ public class PlayerController : MonoBehaviour
         // firing projectiles
         if (Input.GetKeyDown(KeyCode.X))
         {
-            // Launch();
+            Launch();
             currentSpeed = 0;
         }
 
@@ -94,17 +88,16 @@ public class PlayerController : MonoBehaviour
         }
 
         // health decay
-        if (count <= 60)
+        if (count >= 60)
         {
             count = 0;
             ChangeHealth(-1); // SET VALUE
         }
         else
         {
-            count++;
+            count += Time.deltaTime;
         }
     }
-
     void FixedUpdate()
     {
         // movements
@@ -115,7 +108,6 @@ public class PlayerController : MonoBehaviour
         posX = position.x;
         posY = position.y;
     }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         // key collectable
@@ -124,21 +116,18 @@ public class PlayerController : MonoBehaviour
             ChangeKeys(1);
             Destroy(other.gameObject);
         }
-
         // health collectable
         if (other.gameObject.CompareTag("Health")) // SET TAG
         {
             ChangeHealth(150); // SET VALUE
             Destroy(other.gameObject);
         }
-
         // potion collectable
         if (other.gameObject.CompareTag("Potion")) // SET TAG
         {
             ChangePotions(1);
             Destroy(other.gameObject);
         }
-
         // treasure collectable
         if (other.gameObject.CompareTag("Treasure")) // SET TAG
         {
@@ -146,7 +135,6 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-
     void OnTriggerStay2D(Collider2D other)
     {
         // enemy contact
@@ -155,28 +143,22 @@ public class PlayerController : MonoBehaviour
             ChangeHealth(-50); // SET VALUE
         }
     }
-
     void ChangeHealth(int amount)
     {
         currentHealth += amount;
-
         if (currentHealth <= 0)
         {
             currentSpeed = 0;
-            // gameOver = true;
         }
     }
-
     public void ChangeScore(int amount)
     {
         currentScore += amount;
     }
-
     void ChangeKeys(int amount)
     {
         keyAmount += amount;
     }
-
     void ChangePotions(int amount)
     {
         potionAmount += amount;
@@ -186,12 +168,9 @@ public class PlayerController : MonoBehaviour
     void Launch()
     {
         GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
-
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection, 300);
-
         animator.SetTrigger("Launch");
-
         PlaySound(throwSound); // SET LAUNCH CLIP
     }
     
@@ -200,5 +179,4 @@ public class PlayerController : MonoBehaviour
     {
         audioSource.PlayOneShot(clip);
     }
-    */
 }
