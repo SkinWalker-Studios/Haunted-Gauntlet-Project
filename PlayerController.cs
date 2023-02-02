@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            count += Time.deltaTime;
+            count *= Time.deltaTime;
         }
     }
     void FixedUpdate()
