@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
 
     Rigidbody2D rigidbody2D;
 
-    // Animator animator;
+    Animator animator;
     Vector2 moveDirection = new Vector2(1, 0);
 
     // Start is called before the first frame update
@@ -20,13 +20,11 @@ public class EnemyController : MonoBehaviour
     {
         currentHealth = maxHealth;
         rigidbody2D = GetComponent<Rigidbody2D>();
-       // animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
-    {
-        
-            
+    {            
         Vector2 position = rigidbody2D.position;
 
         // finds the player's position
@@ -50,17 +48,16 @@ public class EnemyController : MonoBehaviour
         Vector2 move = new Vector2(directionX, directionY);
 
         // sets the direction
-        /*if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
             moveDirection.Set(move.x, move.y);
             moveDirection.Normalize();
         }
-
         // adds animation to the direction
         animator.SetFloat("Move X", moveDirection.x);
         animator.SetFloat("Move Y", moveDirection.y);
         animator.SetFloat("Speed", move.magnitude);
-        */
+        
         // updates position
         rigidbody2D.MovePosition(position);
     }
@@ -89,8 +86,8 @@ public class EnemyController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            // Destroy(GameObject);
-            // FindObjectOfType<PlayerController>().ChangeScore(100); // SET VALUE
+            Destroy(GameObject);
+            FindObjectOfType<PlayerController>().ChangeScore(100); // SET VALUE
         }
     }
 }
