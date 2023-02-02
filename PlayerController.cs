@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //Win/Game Over state
+    public GameOverScreen GameOverScreen;
+    public WinScreen WinScreen;
+  
     // player stats
     public float speed = 1.0f;
     public int maxHealth = 2000;
@@ -152,6 +156,19 @@ public class PlayerController : MonoBehaviour
             currentSpeed = 0;
         }
     }
+    
+    //Game over screen score
+    public void GameOver()
+    {
+        GameOverScreen.Setup(currentScore);
+    }
+    
+    //Win screen score
+    public void Win()
+    {
+        WinScreen.Setup(currentScore);
+    }
+    
     public void ChangeScore(int amount)
     {
         currentScore += amount;
